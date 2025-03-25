@@ -29,8 +29,33 @@ int main() {
 ********** TODO ********** TODO ********** TODO ********** TODO ********** TODO*/
 Queue<Person> findWinners(int numberOfCandies, Queue<Person>guessList) {
 	Queue<Person>winners;
+	if (guessList.isEmpty()) {
+		return winners;
+	}
+	int minDifference = INT_MAX;
+	Queue<Person> tempList = guessList;
 
+	while (!tempList.isEmpty()) {
+		Person current = tempList.peek();
+		int diff = abs(current.getAmount() - numberOfCandies);
 
+		if (diff < minDifference) {
+			minDifference = diff;
+		}
+
+		tempList.dequeue();
+	}
+
+	tempList = guessList;
+	while (!tempList.isEmpty()) {
+		Person current = tempList.peek();
+		int diff = abs(current.getAmount() - numberOfCandies);
+
+		if (diff == minDifference) {
+			winners.enqueue(current);
+		}
+		tempList.dequeue();
+	}
 	return winners;
 }
 

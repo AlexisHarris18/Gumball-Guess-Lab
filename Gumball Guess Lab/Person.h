@@ -1,3 +1,4 @@
+
 #pragma once
 #include <iostream>
 
@@ -122,3 +123,4 @@ ostream& operator <<(ostream& out, const Person& g) {
 	out << g.name << ": " << g.amount;
 	return out;
 }
+
